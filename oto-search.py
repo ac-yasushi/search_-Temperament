@@ -1,14 +1,20 @@
-a=6
-b=7
+a=21
+b=21
 
-c=1
+border=0.5
 
 print(1/2)
 
-for i in range(20):
-    c=c*(a/b)
-    if(c<1/2):
-        c=c*2
-        print("{0:2d}: {1:.5f}      誤差:{2:.4}%".format(i, c, (1-c)*100))
-    else:
-        print("{0:2d}: {1:.5f}      誤差:{2:.4}%".format(i, c, (1-c)*100))
+for j in range(1, a):
+    for k in range(1, b):
+        if(j<k):
+            c=1.0
+            for i in range(15):
+                c=c*(j/k)
+                if(c<1/2):
+                    c=c*2
+                    if((1-c)*100<border):
+                        print("{0:2d}: {1:.5f}   誤差:{2:.4}%  組合:[{3}, {4}]".format(i, c, (1-c)*100, j, k))
+                else:
+                    if((1-c)*100<border):
+                        print("{0:2d}: {1:.5f}   誤差:{2:.4}%  組合:[{3}, {4}]".format(i, c, (1-c)*100, j, k))
